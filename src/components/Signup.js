@@ -1,6 +1,7 @@
 
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const Signup = () => {
@@ -8,6 +9,8 @@ const Signup = () => {
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const nav=useNavigate();
   
   
     async function submit(e) {
@@ -18,6 +21,8 @@ const Signup = () => {
           name, phone, email, password
         })
         console.log(response.data);
+        nav("/")
+        alert("registered successfully plg login")
       }
       catch (error) {
         console.log(error);

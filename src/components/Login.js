@@ -1,13 +1,14 @@
 import { useState } from "react";
 import React from 'react';
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
+
 
 
 function Login() {
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
-
+const nav=useNavigate()
   async function submit(e){
     e.preventDefault();
     try{
@@ -19,6 +20,10 @@ function Login() {
       console.log(data.message);
       console.log(data.loginToken);
       localStorage.setItem('token',data.token);
+      alert(" login successfully")
+      // window.location.reload(true)
+      nav("/")
+      
     }
     catch(error){
       console.log(error);
